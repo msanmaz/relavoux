@@ -11,7 +11,7 @@ const Hero = () => {
 
 
                 <div className='w-full rounded-none relative bg-overlay flex flex-row md:flex-col md:flex-1 bg-blend-darken object-cover bg-cover  bg-center' style={{backgroundImage:` url('/male_bg.jpg')`, '--overlay-colors': 'rgba(39,62,84,0.3), rgba(39,62,84,0.3)'}} >
-                    <Link href='/men/New In'>
+                    <Link href='/men'>
                     <button className='p-2 btn-outline border-white border-[3px] px-[2rem] text-white rounded-md absolute centerlayer'>Men</button>
                     </Link>
                 </div>

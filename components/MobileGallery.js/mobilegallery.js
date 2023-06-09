@@ -6,7 +6,7 @@ import { Pagination } from "swiper";
 import Thumbnail from 'components/Thumbnail/thumb-nail'
 
 export const MobileGallery = ({product}) => {
-    const nextTwo = [product[0].node.originalSrc, product[1].node.originalSrc];
+    const nextTwo = [product[0].node.originalSrc];
 
     const listItems = []
     nextTwo.map((item, i) => {

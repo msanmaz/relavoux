@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react'
 import ProductCard from 'components/ProductCard/Product-Card'
 import { readCache } from 'lib/cache'
-import Link from 'next/link'
 import Layout from 'common/Layout/lay-out'
 import Crumbs from '../../common/Crumbs/crumbs-filter'
 import Head from 'next/head'
+
+
+
 const MenCategories = ({ cache }) => {
     console.log(cache)
     return (

@@ -9,7 +9,7 @@ const Gallery = ({ product }) => {
     const isClick = React.useRef(true)
     const secondPhoto = React.useRef(false)
     const [x, Setx] = React.useState(false)
-    const nextTwo = [product[0].node.originalSrc, product[1].node.originalSrc];
+    const nextTwo = [product[0].node.originalSrc];
 
 
 
