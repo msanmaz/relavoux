@@ -1,4 +1,8 @@
 module.exports = {
+    parserOptions:{
+        ecmaVersion: 2020,
+        sourceType: 'module',
+    },
     env: {
       browser: true,
       es6: true,
@@ -11,6 +15,7 @@ module.exports = {
     rules: {
       'react-hooks/exhaustive-deps': 'off',
       'jsx-a11y/alt-text': 'off',
+      'prop-types': 'off'
     },
   };
   

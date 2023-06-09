@@ -5,8 +5,6 @@ import { useState } from "react"
 import Login from "../../components/Login/User-Login"
 import Register from '../../components/Register/User-Register'
 import Layout from '../../common/Layout/lay-out'
-import { useContext } from 'react'
-import { CartContext } from 'context/shopContext'
 import { useRouter } from 'next/dist/client/router'
 import Head from 'next/head'
 
@@ -17,7 +15,7 @@ import Head from 'next/head'
 const LoginUser = () => {
   const router = useRouter()
   const [currentView, setCurrentView] = useState('Login')
-  const { accessToken, customerInfo, setCustomerInfo, SetAccessToken, getCustInfo } = useContext(CartContext)
+  // const { accessToken, customerInfo, setCustomerInfo, SetAccessToken, getCustInfo } = useContext(CartContext)
 
 
   React.useEffect(() => {

@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { useContext } from 'react'
 import { CartContext } from 'context/shopContext'
 import {useRouter } from 'next/router'
-import { getCustomerInfo } from 'lib/shopify'
+// import { getCustomerInfo } from 'lib/shopify'
 import Layout from '../../common/Layout/lay-out'
 import Head from 'next/head'
 
