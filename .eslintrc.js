@@ -24,7 +24,8 @@ module.exports = {
       'no-unused-vars': 'off',
       'inner declarations': 'off',
       'no-empty-pattern':'off',
-      'no-unexpected-multiline':'off'
+      'no-unexpected-multiline':'off',
+      '@typescript-eslint/no-var-requires': 'off',
     },
   };
   

@@ -1,13 +1,11 @@
 
 import React from 'react'
-
+import Head from 'next/head'
 import { useState } from "react"
 import { useRouter } from 'next/dist/client/router'
-
-
-
-
-
+import Login from 'components/Login/User-Login'
+import Register from 'components/Login/User-Register'
+import Layout from 'components/Layout/Layout'
 const LoginUser = () => {
   const router = useRouter()
   const [currentView, setCurrentView] = useState('Login')

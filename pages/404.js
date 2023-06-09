@@ -1,4 +1,8 @@
 
+import Head from "next/head"
+import Link from "next/link"
+import Layout from "../common/Layout/lay-out"
+
 
 const NotFound = () => {
   return (
