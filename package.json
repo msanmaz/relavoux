@@ -17,6 +17,7 @@
     "@hookform/error-message": "^2.0.0",
     "clsx": "^1.2.1",
     "daisyui": "^2.22.0",
+    "eslint-plugin-next": "^0.0.0",
     "graphql-request": "^4.3.0",
     "lodash": "^4.17.21",
     "next": "^12.2.4",

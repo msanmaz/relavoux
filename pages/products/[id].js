@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React from 'react'
 import Layout from 'common/Layout/lay-out'
 import { readCache } from 'lib/cache'

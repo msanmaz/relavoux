@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import Image from 'next/image'
 import React from 'react'
 import { Transition } from '@headlessui/react'
@@ -75,7 +74,6 @@ const Gallery = ({ product }) => {
 
 
 </div>
-
         </div>
     )
 }

@@ -2,11 +2,7 @@
 import React from 'react'
 
 import { useState } from "react"
-import Login from "../../components/Login/User-Login"
-import Register from '../../components/Register/User-Register'
-import Layout from '../../common/Layout/lay-out'
 import { useRouter } from 'next/dist/client/router'
-import Head from 'next/head'
 
 
 
