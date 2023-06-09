@@ -8,7 +8,7 @@ import Button from 'common/button/CommonButton'
 import { createCustomerAccessToken } from '../../lib/shopify'
 import Spinner from '../../common/icons/spinner'
 
-const Login = ({ setCurrentView }) => {
+const UserLogin = ({ setCurrentView }) => {
 
 
   const router = useRouter()
@@ -106,4 +106,4 @@ const Login = ({ setCurrentView }) => {
   )
 }
 
-export default Login
+export default UserLogin

@@ -3,10 +3,10 @@ import Input from "common/Input/input"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { useState } from "react"
-import { FieldValues, useForm } from "react-hook-form"
+import {  useForm } from "react-hook-form"
 import { createCustomer } from "../../lib/shopify"
 
-const Register = ({setCurrentView}) => {
+const UserRegister = ({setCurrentView}) => {
   const [authError, setAuthError] = useState(undefined)
   const [loading, SetLoading] = useState(false)
   const [success, SetSuccess] = useState({message:'',status:false})
@@ -138,4 +138,4 @@ console.log(authError)
   )
 }
 
-export default Register
+export default UserRegister
