@@ -3,9 +3,10 @@ import React from 'react'
 import Head from 'next/head'
 import { useState } from "react"
 import { useRouter } from 'next/dist/client/router'
-import Layout from 'components/Layout/Layout'
 import UserLogin from '../../components/Login/User-Login'
 import UserRegister from '../../components/Register/User-Register'
+import Layout from '../../common/Layout/layout'
+
 
 const LoginUser = () => {
   const router = useRouter()
@@ -32,7 +33,7 @@ const LoginUser = () => {
 
       </Head>
       <div className="w-full flex justify-center py-24">
-        {currentView === "Login" ? <Login setCurrentView={setCurrentView} /> : <Register setCurrentView={setCurrentView} />}
+        {currentView === "Login" ? <UserLogin setCurrentView={setCurrentView} /> : <UserRegister setCurrentView={setCurrentView} />}
       </div>
     </>
   )
