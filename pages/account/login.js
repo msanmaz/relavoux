@@ -5,7 +5,7 @@ import { useState } from "react"
 import { useRouter } from 'next/dist/client/router'
 import UserLogin from '../../components/Login/User-Login'
 import UserRegister from '../../components/Register/User-Register'
-import Layout from '../../common/Layout/layout'
+import Layout from '../../common/Layout/lay-out'
 
 
 const LoginUser = () => {
