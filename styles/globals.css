@@ -148,8 +148,12 @@
   .text-3xl-semi {
     @apply text-[36px] leading-[48px] font-semibold;
   }
-}
 
+
+  #gallery-items{
+    @apply md:w-[28%] w-[167px]
+}
+}
 
 
 @font-face {
@@ -230,10 +234,3 @@
           transition-duration: .5s; ;
         }
 
-        #gallery-items{
-          width: 28%;
-          @media (max-width: 425px) {
-            width: 167px;
-
-          }
-        }

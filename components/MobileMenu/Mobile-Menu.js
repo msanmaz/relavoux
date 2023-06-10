@@ -59,8 +59,8 @@ const { accessToken, lists,wishList,customerInfo } = useContext(CartContext)
             </li>
             {lists ? (
               <>
-                {lists.map((collection) => (
-                  <li key={collection.id} className="bg-gray-50 p-4">
+                {lists.map((collection,i) => (
+                  <li key={i} className="bg-gray-50 p-4">
                     <Link href={`/men/${collection.node.handle}`}>
                       <a>
                         <button
