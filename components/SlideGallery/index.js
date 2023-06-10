@@ -1,6 +1,6 @@
 import React from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
-import ProductCard from "components/ProductCard/product-card"
+import ProductCard from '../../components/ProductCard/Product-Card'
 
 
 
