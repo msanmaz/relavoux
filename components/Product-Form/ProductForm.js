@@ -54,9 +54,9 @@ const ProductForm = ({ product, variants }) => {
   return (
     <>
       <div className='flex flex-col px-4 py-[1rem] md:mx-[1rem]'>
-        <div className='bebas text-2xl md:text-4xl flex justify-center'>{product.title}</div>
-        <div className='bebeasBook text-xl flex justify-center py-4'>Price: <span className='!bebas pl-4 text-xl'>{formatter.format(product.variants.edges[0].node.priceV2.amount)}</span></div>
-        <div className='flex flex-row'>
+        <div className='bebas text-2xl md:text-4xl flex justify-start'>{product.title}</div>
+        <div className='bebeasBook text-xl flex justify-start py-4'>Price: <span className='!bebas pl-4 text-xl'>{formatter.format(product.variants.edges[0].node.priceV2.amount)}</span></div>
+        <div className='flex flex-row pb-[2rem]'>
 
           {
 
@@ -94,7 +94,7 @@ const ProductForm = ({ product, variants }) => {
             </fieldset>
           }
 
-          <div className="w-full md:w-1/2">
+          {/* <div className="w-full md:w-1/2">
             <div className="flex flex-col justify-end">
               <div className=''>
                 <div className="form-control">
@@ -124,14 +124,16 @@ const ProductForm = ({ product, variants }) => {
               </div>
             </div>
 
-          </div>
+          </div> */}
         </div>
-        <ProductTabs product={product} />
 
         <Button
           onClick={() => handleAddToCart()}
         >{loading ? <Spinner/> : 'Add To Cart'}
         </Button>
+        <ProductTabs product={product} />
+
+
       </div>
     </>
   )

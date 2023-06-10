@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 
-
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
@@ -56,9 +50,15 @@
   }
 }
 
+.back-button{
+  font-family: 'BebasNeue Light';
+  color: black;
+  line-height: 1;
+}
 @layer components {
   .bebas{
     font-family: 'BebasNeue';
+    font-weight: 999;
   }
   .bebasLight{
     font-family: 'BebasNeue Light';
@@ -86,7 +86,9 @@
 
 
 
-
+.back-button{
+  @apply border-b border-black
+}
   .content-container {
     @apply max-w-[1440px] w-full mx-auto px-8
   }
@@ -219,4 +221,19 @@
           border-top: 0!important;
           opacity: 1!important;
           --tw-rotate:15deg!important;
+        }
+
+
+        ._1GHbd {
+          opacity: 1;
+          pointer-events: auto;
+          transition-duration: .5s; ;
+        }
+
+        #gallery-items{
+          width: 28%;
+          @media (max-width: 425px) {
+            width: 167px;
+
+          }
         }

@@ -11,7 +11,7 @@ const MainMenu = ({}) => {
 
 let collections
 
-const { accessToken, collection,wishList,customerInfo } = useContext(CartContext)
+const { accessToken, lists,wishList,customerInfo } = useContext(CartContext)
 
   const setScreenCountry = () => setScreen("country")
   const setScreenSearch = () => setScreen("search")
@@ -57,19 +57,19 @@ const { accessToken, collection,wishList,customerInfo } = useContext(CartContext
                 </a>
               </Link>
             </li>
-            {collections ? (
+            {lists ? (
               <>
-                {collections.map((collection) => (
+                {lists.map((collection) => (
                   <li key={collection.id} className="bg-gray-50 p-4">
-                    <Link href={`/men/${collection.handle}`}>
+                    <Link href={`/men/${collection.node.handle}`}>
                       <a>
                         <button
                           className="flex items-center justify-between w-full"
                         >
                           <span className="sr-only">
-                            Go to {collection.title} collection
+                            Go to {collection.node.title} collection
                           </span>
-                          <span>{collection.title}</span>
+                          <span>{collection.node.title}</span>
                           <ChevronDown className="-rotate-90" />
 
                         </button>

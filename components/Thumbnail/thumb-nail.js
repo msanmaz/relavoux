@@ -8,11 +8,14 @@ const Thumbnail = ({
   thumbnail,
   images,
   size = "small",
+  productPage = false,
 }) => {
-  const initialImage = thumbnail || images
+  const initialImage = thumbnail || images;
   return (
     <div
-      className={clsx("relative aspect-[34/34]", {
+      className={clsx("relative", {
+        "aspect-[24/34] md:aspect-[34/34]": !productPage,
+        "aspect-[3/3.75]": productPage,
         "w-[80px]": size === "xs",
         "w-[180px]": size === "small",
         "w-[290px]": size === "medium",
@@ -22,8 +25,9 @@ const Thumbnail = ({
     >
       <ImageOrPlaceholder images={initialImage} size={size} />
     </div>
-  )
-}
+  );
+};
+
 
 const ImageOrPlaceholder = ({
   images,

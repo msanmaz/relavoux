@@ -5,9 +5,12 @@ const Crumbs = () => {
     return (
         <>
             <div className='flex pt-[1rem] md:pt-[2rem] justify-center flex-col flex-wrap md:flex-row w-full md:justify-between px-[1.4rem] md:pl-[6.3rem] md:pr-[6rem]'>
-                <div className='flex items-center justify-center'>
+                <div className='flex items-center justify-start'>
                     <div className="text-sm bebas text-[#A49D9B] uppercase breadcrumbs">
                         <ul>
+                            <li className='back-button' onClick={() => router.back()}>
+                                Back
+                            </li>
                             <li ><Link href='/'>Home</Link></li>
                             {router.query?.id ? <> <li ><Link href='/men'>Men</Link></li><li >{router.query.id}</li></> : <li><Link href='/men'>Men</Link></li>}
 

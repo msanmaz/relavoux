@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from 'react'
 import { updateShopifyCheckout } from '../lib/helpers'
-import { createCheckout,getCollection, getCustomerInfo } from '../lib/shopify'
+import { createCheckout,getCollection, getCustomerInfo,getProductsInCollection } from '../lib/shopify'
 import { useModalDropDown } from "context/modal-context"
 
 
@@ -13,6 +13,7 @@ export default function ShopProvider({ children }) {
   const [checkoutUrl, setCheckoutUrl] = useState('')
   const [drawer, setDrawer] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [lists, setLists] = useState([])
   const [customerInfo, setCustomerInfo] = useState(() => {
     if (typeof window !== 'undefined') {
       const stickyValue = window.localStorage.getItem('customer');
@@ -61,6 +62,8 @@ export default function ShopProvider({ children }) {
   useEffect(() => {
     const fetchCats = async () => {
       const collection = await getCollection()
+      const collections = await getProductsInCollection()
+      setLists(collections)
       setCollection(collection)
     }
     fetchCats()
@@ -156,6 +159,7 @@ export default function ShopProvider({ children }) {
       setWishList,
       accessToken,
       SetAccessToken,
+      lists,
       customerInfo,
       collection,
       setCustomerInfo,

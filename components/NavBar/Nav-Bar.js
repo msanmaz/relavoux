@@ -15,29 +15,29 @@ import SkeletonProductPreview from "../Skeletons/SkeletonProductPreview"
 import Modal from "../purchaseModal/purchase_modal"
 
 const Nav = () => {
-  const { accessToken, collection,wishList,customerInfo } = useContext(CartContext)
+  const { accessToken, collection, wishList, customerInfo } = useContext(CartContext)
   const { pathname } = useRouter()
   const [isHome, setIsHome] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const wishListLength = !wishList ? 0 : wishList?.items.length
   //useEffect that detects if window is scrolled > 5px on the Y axis
   useEffect(() => {
-    if (isHome) {
-      const detectScrollY = () => {
-        if (window.scrollY > 5) {
-          setIsScrolled(true)
-        } else {
-          setIsScrolled(false)
-        }
-      }
 
-      window.addEventListener("scroll", detectScrollY)
-
-      return () => {
-        window.removeEventListener("scroll", detectScrollY)
+    const detectScrollY = () => {
+      if (window.scrollY > 5) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
       }
     }
-  }, [isHome])
+
+    window.addEventListener("scroll", detectScrollY)
+
+    return () => {
+      window.removeEventListener("scroll", detectScrollY)
+    }
+
+  }, [])
 
   useEffect(() => {
     pathname === "/" ? setIsHome(true) : setIsHome(false)
@@ -105,17 +105,17 @@ const Nav = () => {
               <div className="hidden small:flex items-center md:gap-x-6  h-full">
 
                 <Link href='/wishlist'>
-                {`Wish List (${wishListLength})`}
+                  {`Wish List (${wishListLength})`}
                 </Link>
               </div>
 
               <CartDropdown />
-              <Modal/>
+              <Modal />
             </div>
           </nav>
-          <MobileMenu customer={customerInfo} accessToken={accessToken} />
+          <MobileMenu customer={customerInfo}  accessToken={accessToken} />
         </header>
-        <Topbar isHome={isHome} isScrolled={isScrolled} />
+        {/* <Topbar isHome={true} isScrolled={isScrolled} /> */}
       </div>
     </>
 

@@ -24,18 +24,6 @@ const ProductDetail = ({ products }) => {
         <title>{title}</title>
 
         </Head>
-            <div className='flex pt-[1rem] md:pt-[2rem] pb-[1rem] justify-center flex-col flex-wrap md:flex-row w-full md:justify-between px-[1.4rem] md:pl-[10.2rem] md:pr-[10.5rem]'>
-                <div className='flex items-center justify-center'>
-                    <div className="text-sm bebas text-[#A49D9B] uppercase breadcrumbs">
-                        <ul>
-                            <li><Link href='/'>Home</Link></li>
-                            <li><Link href='/men'>Men</Link></li>
-                            <li>{currentCategory}</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
 
             {size.width >= '768' ? <div className='px-[9.5rem] flex flex-row'>
                 <div className='w-1/2'>
@@ -48,11 +36,9 @@ const ProductDetail = ({ products }) => {
                 </div>
             </div>
                 : <div className='flex pb-[2rem] flex-col w-full'>
-                    <div className='px-[1rem]'>
                     <MobileGallery product={products.images.edges} />
 
-                    </div>
-                    <div className='justify-center'>
+                    <div className='justify-start'>
                         <ProductForm product={products} variants={products.variants.edges} />
 
                     </div>

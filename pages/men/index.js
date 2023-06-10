@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import ProductCard from 'components/ProductCard/Product-Card'
 import { readCache } from 'lib/cache'
 import Layout from 'common/Layout/lay-out'
@@ -18,7 +18,7 @@ const MenCategories = ({ cache }) => {
             <div className='w-full'>
 
                 <Crumbs />
-                <div className="flex flex-wrap mx-[0.5rem] justify-center">
+                <div className="flex flex-wrap gap-[1rem] md:gap-0 mx-[0.5rem] justify-center">
                     {cache.products.products.edges?.length >= 1 ?
                         cache.products.products.edges.map(product => (
                             <ProductCard height={27} key={product.node.id} product={product} />

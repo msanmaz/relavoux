@@ -9,18 +9,8 @@ SwiperCore.use([Navigation]);
 
 const endpoints = [
     {
-        name: 'New Arrivals',
-        slug: 'New In',
-    },
-    {
-        name: 'Best Sellers',
-        slug: 'Sale',
-
-    },
-    {
-        name: 'Tshirt & Longsleeves',
-        slug: 'Tshirt & Longsleeves',
-
+        name: 'Hoodies',
+        slug: 'Hoodies',
     },
     {
         name: 'Sweatshirt',
@@ -28,10 +18,8 @@ const endpoints = [
 
     },
     {
-        name: 'Jeanshosen',
-        slug: 'Jeanshosen & Jogger',
-
-
+        name: 'Zippers',
+        slug: 'Zippers',
     },
     {
         name: 'All',
