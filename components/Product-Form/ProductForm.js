@@ -54,14 +54,14 @@ const ProductForm = ({ product, variants }) => {
   return (
     <>
       <div className='flex flex-col px-4 py-[1rem] md:mx-[1rem]'>
-        <div className='bebas text-2xl md:text-4xl flex justify-start'>{product.title}</div>
-        <div className='bebeasBook text-xl flex justify-start py-4'>Price: <span className='!bebas pl-4 text-xl'>{formatter.format(product.variants.edges[0].node.priceV2.amount)}</span></div>
+        <div className='erbaum product-title flex'>{product.title}</div>
+        <div className='bebeasBook text-xl flex justify-start py-4'><span className='!erbaum-thin product-price'>{formatter.format(product.variants.edges[0].node.priceV2.amount)}</span><span className='erbaum-thin product-vat pl-2 md:pl-4 flex items-center !lowercase'>VAT incl.</span></div>
         <div className='flex flex-row pb-[2rem]'>
 
           {
 
             <fieldset className="md:w-1/2 w-full">
-              <legend className="font-light bebas">Size</legend>
+              <legend className="font-light roboto-flex">Size</legend>
               <div className="inline-flex items-center">
                 {
                   variants.map(item => {
@@ -80,8 +80,8 @@ const ProductForm = ({ product, variants }) => {
                           }}
                         />
                         <div className={clsx(
-                "border-gray-200 border bebas p-[0.15rem] mt-3 h-[2rem] w-[2rem] mr-3 md:h-auto md:w-auto md:p-2 text-lg rounded-lg space-y-4 transition-all duration-200",
-                { "text-white bg-gray-900": checked }
+                "border-gray-200 bebas p-[0.15rem] mt-3 h-[2rem] w-[2rem] mr-3 md:h-auto md:w-auto md:p-2 text-lg rounded-[0.2rem] space-y-4 transition-all duration-200",
+                { "text-black border !border-black": checked }
               )}>
                           <span className="px-2">{item.node.title}</span>
                         </div>

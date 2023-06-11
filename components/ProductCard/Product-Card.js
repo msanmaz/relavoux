@@ -114,8 +114,8 @@ const ProductCard = ({ product }) => {
 
     <Link href={`/products/${product.node.handle}`}>
       <div className='flex flex-col justify-center items-center'>
-        <h3 className="mt-4 md:text-base font-medium text-gray-700 bebeasBook uppercase product-title">{title}</h3>
-        <p className="mt-1 bebas text-lg">{formatter.format(price)}</p>
+        <h3 className="mt-4 md:text-base font-medium text-gray-700 bebeasBook uppercase">{title}</h3>
+        <p className="mt-1 bebas text-sm">{formatter.format(price)}</p>
       </div>
     </Link>
 
