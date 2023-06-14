@@ -45,15 +45,7 @@ export async function getServerSideProps(context) {
         permanent: false,
       },
     }
-  } else {
-    return {
-      redirect: {
-        destination: 'https://attilahomes.com',
-        permanent: false,
-      },
-    }
-  }
-
+  } 
   const cache = await readCache()
 
   return {
