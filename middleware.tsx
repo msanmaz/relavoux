@@ -10,7 +10,7 @@ export async function middleware(req: NextRequest) {
     const country = geo.country || 'DE';
     console.log(country)
     // If the user is from Turkey, redirect them to a different URL
-    if (country === 'IE') {
+    if (country === 'TR') {
         return NextResponse.redirect('https://moshapparel.com');
     }
 
