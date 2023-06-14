@@ -5,7 +5,6 @@ import Hero2 from '../components/Hero/Hero2'
 import SlideGallery from '../components/SlideGallery'
 import { readCache } from 'lib/cache'
 import Link from 'next/link'
-import geoip from 'geoip-lite';
 
 export default function Home({ cache }) {
 
@@ -35,17 +34,7 @@ Home.getLayout = (page) => {
 }
 
 export async function getServerSideProps(context) {
-  const ip = context.req.headers['x-real-ip'] || context.req.connection.remoteAddress;
-  const geo = geoip.lookup(ip);
 
-  if (geo && geo.country === 'TR') {
-    return {
-      redirect: {
-        destination: 'https://moshapparel.com',
-        permanent: false,
-      },
-    }
-  } 
   const cache = await readCache()
 
   return {
