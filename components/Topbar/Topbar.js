@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -8,25 +8,7 @@ import SwiperCore, { Navigation } from "swiper";
 SwiperCore.use([Navigation]);
 
 const endpoints = [
-    {
-        name: 'Hoodies',
-        slug: 'Hoodies',
-    },
-    {
-        name: 'Sweatshirt',
-        slug: 'Sweatshirt',
-
-    },
-    {
-        name: 'Zippers',
-        slug: 'Zippers',
-    },
-    {
-        name: 'All',
-        slug: 'All',
-    },
-
-
+    // Your endpoints
 ]
 
 const Topbar = ({ isHome, isScrolled }) => {
@@ -64,8 +46,6 @@ const Topbar = ({ isHome, isScrolled }) => {
             [currentCategory, listItems, endpoints]
     )
 
-
-
     categoryButtons.map((item, i) => {
         listItems.push(
             <SwiperSlide className={`max-w-[24%] mx-[0.5rem]`} key={`slide-${i}`}>
@@ -73,17 +53,17 @@ const Topbar = ({ isHome, isScrolled }) => {
             </SwiperSlide>
         )
     })
+
+    const isVisible = isHome && !isScrolled;
+
     return (
         <>
-
-            <div className={`${isHome && !isScrolled ? 'opacity-0' : 'opacity-1'} transition-opacity pl-[1.1rem]   md:pl-[8rem] text-base z-[50] bg-white  !h-[3rem] w-full py-[0.7rem] items-center border-b border-gray-300`}>
-
+            <div className={`transition-opacity duration-300 ${isVisible ? 'opacity-0 invisible' : 'opacity-100 visible'} pl-[1.1rem]   md:pl-[8rem] text-base z-[50] bg-white  !h-[3rem] w-full py-[0.7rem] items-center border-b border-gray-300`}>
                 <Swiper
                     slidesPerView={'auto'}
                     grabCursor={true}
                 >
                     {listItems}
-
                 </Swiper>
             </div>
         </>
