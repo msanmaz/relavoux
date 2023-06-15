@@ -14,6 +14,7 @@ import Head from 'next/head'
 
 
 const ProductDetail = ({ products }) => {
+    console.log(products)
     const router = useRouter()
     const [currentCategory, setCurrentCategory] = React.useState(router.query.id)
     const size = useWindowSize()
@@ -35,7 +36,7 @@ const ProductDetail = ({ products }) => {
 
                 </div>
             </div>
-                : <div className='flex pb-[2rem] flex-col w-full'>
+                : <div className='flex pb-[2rem] flex-col w-full mt-[-3rem] md:mt-0'>
                     <MobileGallery product={products.images.edges} />
 
                     <div className='justify-start'>

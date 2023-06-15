@@ -68,7 +68,7 @@ const Topbar = ({ isHome, isScrolled }) => {
 
     categoryButtons.map((item, i) => {
         listItems.push(
-            <SwiperSlide className={`max-w-[25%] mx-[0.5rem]`} key={`slide-${i}`}>
+            <SwiperSlide className={`max-w-[24%] mx-[0.5rem]`} key={`slide-${i}`}>
                 {item}
             </SwiperSlide>
         )

@@ -37,10 +37,6 @@ const ProductCard = ({ product }) => {
 
 
 
-  const onMouseEnter = () => { setIsHovered(true) };
-  const onMouseLeave = () => { setIsHovered(false) };
-
-  console.log(originalSrc)
   return (
     <a className="group w-[167px] md:w-[33%] lg:w-[30%] md:px-4 pt-4">
       <div className="w-full bg-gray-200 rounded-none overflow-hidden">
