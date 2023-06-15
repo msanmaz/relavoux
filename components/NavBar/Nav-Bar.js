@@ -13,13 +13,19 @@ import { CartContext } from 'context/shopContext'
 import { repeat } from "../../lib/helpers"
 import SkeletonProductPreview from "../Skeletons/SkeletonProductPreview"
 import Modal from "../purchaseModal/purchase_modal"
-
+import WishList from '../../common/icons/wishList'
+import { useWindowSize } from "../../lib/hooks/useWindowSize"
 const Nav = () => {
   const { accessToken, collection, wishList, customerInfo } = useContext(CartContext)
   const { pathname } = useRouter()
   const [isHome, setIsHome] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const wishListLength = !wishList ? 0 : wishList?.items.length
+  const { width, height } = useWindowSize()
+
+  const iconSize = (width) <= 425 ? 15 : 20
+  const iconSizeW = (width) <= 425 ? 13 : 15
+
   //useEffect that detects if window is scrolled > 5px on the Y axis
   useEffect(() => {
 
@@ -74,7 +80,7 @@ const Nav = () => {
               </div>
               <div className="md:flex hidden items-center h-full">
                 <Link href="/">
-                  <a className="text-xl-semi bebasBold uppercase">RELAVOUX</a>
+                  <a className="text-base erbaum uppercase">RELAVOUX</a>
                 </Link>
               </div>
 
@@ -88,7 +94,7 @@ const Nav = () => {
 
             <div className="flex md:hidden items-center h-full">
               <Link href="/">
-                <a className="text-xl-semi bebasBold uppercase">RELAVOUX</a>
+                <a className="text-lg erbaum uppercase">RELAVOUX</a>
               </Link>
             </div>
 
@@ -102,18 +108,24 @@ const Nav = () => {
                 </Link>
               </div>
 
-              <div className="hidden small:flex items-center md:gap-x-6  h-full">
-
-                <Link href='/wishlist'>
-                  {`Wish List (${wishListLength})`}
-                </Link>
+              <div className="cursor-pointer flex items-center pr-[30px] md:pr-auto md:gap-x-6 h-full">
+                <div className="relative md:pt-[3px]">
+                  <Link href="/wishlist">
+                    <WishList size={iconSizeW} />
+                  </Link>
+                  <span className="absolute top-[-2.5px] left-[16px] md:left-[-8px] right-0 transform translate-x-[50%] translate-y-[-50%] md:pl-[20px] font-extralight text-xs rounded-full md:pt-[0.38rem] pt-[0.65rem]">
+                    {wishListLength}
+                  </span>
+                </div>
               </div>
 
-              <CartDropdown />
+
+
+              <CartDropdown iconSize={iconSize} />
               <Modal />
             </div>
           </nav>
-          <MobileMenu customer={customerInfo}  accessToken={accessToken} />
+          <MobileMenu customer={customerInfo} accessToken={accessToken} />
         </header>
         {/* <Topbar isHome={true} isScrolled={isScrolled} /> */}
       </div>

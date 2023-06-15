@@ -54,6 +54,7 @@
   color: black;
   line-height: 1;
   font-size: 11px;
+  opacity: 0.5;
 }
 @layer components {
   .bebas {
@@ -95,8 +96,12 @@
     transform: translateX(-50%) translateY(-50%);
   }
 
+  .quantity{
+    
+    font-size:0.65rem!important
+  }
   .back-button {
-    @apply border-b border-black;
+    @apply border-b border-gray-600 opacity-5;
   }
   .content-container {
     @apply max-w-[1440px] w-full mx-auto px-8;
@@ -159,7 +164,7 @@
   }
 
   .product-title {
-    @apply text-[22px] leading-[22px] md:text-[36px] md:leading-[40px];
+    @apply text-[36px] mb-[16px] leading-[110%] md:text-[36px] md:leading-[40px];
   }
   .product-price {
     @apply text-[15px] leading-[110%] md:text-[20px] md:leading-[18px];

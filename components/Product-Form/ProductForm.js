@@ -54,8 +54,8 @@ const ProductForm = ({ product, variants }) => {
   return (
     <>
       <div className='flex flex-col px-4 py-[1rem] md:mx-[1rem]'>
-        <div className=' product-title flex uppercase font-semibold'>{product.title}</div>
-        <div className='text-xl flex justify-start py-4'><span className=' product-price font-light'>{formatter.format(product.variants.edges[0].node.priceV2.amount)}</span><span className='text-gray-400 product-vat pl-2 md:pl-4 flex items-center font-extralight'>VAT incl.</span></div>
+        <div className=' product-title bebas tracking-wider flex uppercase font-semibold'>{product.title}</div>
+        <div className='text-xl flex justify-start pb-[16px] md:pb-4'><span className=' product-price font-light'>{formatter.format(product.variants.edges[0].node.priceV2.amount)}</span><span className='text-gray-400 product-vat pl-2 md:pl-4 flex items-center font-extralight'>VAT incl.</span></div>
         <div className='flex flex-row pb-[2rem]'>
 
           {

@@ -23,11 +23,7 @@ export default function ShopProvider({ children }) {
         : '';
     }
   });
-  const [wishList, setWishList] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return JSON.parse(window.localStorage.getItem('likes')) || { items: [] }
-    }
-  });
+  const [wishList, setWishList] = useState({items:[]})
   const [accessToken, SetAccessToken] = useState(() => {
     if (typeof window !== 'undefined') {
       const stickyValue = window.localStorage.getItem('user');
@@ -42,6 +38,12 @@ export default function ShopProvider({ children }) {
 
   const { timedOpen } = useModalDropDown()
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const likes = JSON.parse(window.localStorage.getItem('likes'));
+      if (likes) setWishList(likes);
+    }
+  }, []);
 
   useEffect(() => {
     if (localStorage.checkout_id) {

@@ -7,18 +7,18 @@ import Link from "next/link"
 import { useContext } from 'react'
 import { CartContext } from '../../context/shopContext'
 import { Fragment } from "react"
-import {formatter} from '../../lib/helpers'
+import { formatter } from '../../lib/helpers'
 import Button from 'common/button/CommonButton'
 import Thumbnail from "components/Thumbnail/thumb-nail"
+import ShoppingBag from '../../common/icons/shoppingBag'
 
 
-
-const CartDropdown = () => {
+const CartDropdown = ({ iconSize }) => {
   const { state, open, close } = useCartDropdown()
-  const { cart, updateCartItemQuantity  } = useContext(CartContext)
+  const { cart, updateCartItemQuantity } = useContext(CartContext)
   let cartQuantity = 0
   cart.map(item => {
-      return (cartQuantity += item?.variantQuantity)
+    return (cartQuantity += item?.variantQuantity)
   })
 
   let cartTotal = 0
@@ -31,8 +31,14 @@ const CartDropdown = () => {
     <div className="h-full z-50" onMouseEnter={open} onMouseLeave={close}>
       <Popover className="relative h-full">
         <Link href="/cart" passHref>
-          <Popover.Button className="h-full">{`My Bag (${cartQuantity})`}</Popover.Button>
+          <Popover.Button className="h-full">
+            <ShoppingBag size={iconSize} />
+          </Popover.Button>
         </Link>
+        <span className="absolute top-[22px] pl-[18px] md:top-[18px] right-0 transform translate-x-[50%] translate-y-[-50%] md:pl-[20px] font-extralight text-xs rounded-full pt-[0.65rem]">
+          {cartQuantity}
+        </span>
+
         <Transition
           show={state}
           as={Fragment}
@@ -54,7 +60,7 @@ const CartDropdown = () => {
               <>
                 <div className="overflow-y-scroll max-h-[402px] px-4 grid grid-cols-1 gap-y-8 no-scrollbar">
                   {cart
-                    .map((item,index) => (
+                    .map((item, index) => (
                       <div
                         className="grid grid-cols-[122px_1fr] gap-x-4"
                         key={index}
@@ -89,7 +95,7 @@ const CartDropdown = () => {
                             <div>
                               <button
                                 className="flex items-center gap-x-1 text-gray-500"
-                                onClick={() => updateCartItemQuantity(0,item.variantId)}
+                                onClick={() => updateCartItemQuantity(0, item.variantId)}
                               >
                                 <Trash size={14} />
                                 <span>Remove</span>
@@ -107,7 +113,7 @@ const CartDropdown = () => {
                       <span className="font-normal">(incl. taxes)</span>
                     </span>
                     <span className="text-large-semi">
-                    {formatter.format(cartTotal)}
+                      {formatter.format(cartTotal)}
                     </span>
                   </div>
                   <Link href="/cart" passHref>
