@@ -8,7 +8,25 @@ import SwiperCore, { Navigation } from "swiper";
 SwiperCore.use([Navigation]);
 
 const endpoints = [
-    // Your endpoints
+    {
+        name: 'Hoodies',
+        slug: 'Hoodies',
+    },
+    {
+        name: 'Sweatshirt',
+        slug: 'Sweatshirt',
+
+    },
+    {
+        name: 'Zippers',
+        slug: 'Zippers',
+    },
+    {
+        name: 'All',
+        slug: 'All',
+    },
+
+
 ]
 
 const Topbar = ({ isHome, isScrolled }) => {
