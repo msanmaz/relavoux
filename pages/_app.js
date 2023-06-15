@@ -6,6 +6,7 @@ import ShopProvider from '../context/shopContext'
 import '../styles/globals.css'
 import { Router } from 'next/router'
 import BarLoader from "react-spinners/BarLoader";
+import { LocalStorageProvider } from '../context/localStorageContext'
 
 
 
@@ -45,7 +46,11 @@ function MyApp({ Component, pageProps }) {
             <CartDropdownProvider>
 
               <MobileMenuProvider>
+              <LocalStorageProvider>
+
                 {getLayout(<Component {...pageProps} />)}
+                </LocalStorageProvider>
+
               </MobileMenuProvider>
             </CartDropdownProvider>
 

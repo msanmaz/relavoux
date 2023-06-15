@@ -31,7 +31,7 @@ const { accessToken, lists,wishList,customerInfo } = useContext(CartContext)
             </button>
           </div>
         <div>
-          <h1 className="text-xl-semi bebas uppercase">RELAVOUX</h1>
+          <h1 className="text-lg erbaum uppercase">RELAVOUX</h1>
         </div>
         <div className="flex-1 basis-0 flex justify-end">
           <button onClick={close}>

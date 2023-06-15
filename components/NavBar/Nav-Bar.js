@@ -15,8 +15,12 @@ import SkeletonProductPreview from "../Skeletons/SkeletonProductPreview"
 import Modal from "../purchaseModal/purchase_modal"
 import WishList from '../../common/icons/wishList'
 import { useWindowSize } from "../../lib/hooks/useWindowSize"
+import { LocalStorageContext } from "../../context/localStorageContext"
+
 const Nav = () => {
-  const { accessToken, collection, wishList, customerInfo } = useContext(CartContext)
+  const {  collection, customerInfo } = useContext(CartContext)
+  const { accessToken,  wishList} = useContext(LocalStorageContext);
+
   const { pathname } = useRouter()
   const [isHome, setIsHome] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -108,15 +112,22 @@ const Nav = () => {
                 </Link>
               </div>
 
-              <div className="cursor-pointer flex items-center pr-[30px] md:pr-auto md:gap-x-6 h-full">
+              <div className="cursor-pointer flex items-center pr-[20px] md:pr-[0px] md:gap-x-6 h-full">
+                <Link href="/wishlist">
                 <div className="relative md:pt-[3px]">
-                  <Link href="/wishlist">
+                 
                     <WishList size={iconSizeW} />
-                  </Link>
-                  <span className="absolute top-[-2.5px] left-[16px] md:left-[-8px] right-0 transform translate-x-[50%] translate-y-[-50%] md:pl-[20px] font-extralight text-xs rounded-full md:pt-[0.38rem] pt-[0.65rem]">
-                    {wishListLength}
-                  </span>
+                  {
+                    wishListLength > 0 && (
+                      <span className="absolute top-[2px] md:top-[8px] flex align-center items-center left-[16px] md:left-[-8px] right-0 transform translate-x-[50%] translate-y-[-50%] md:pl-[20px] font-extralight text-xs rounded-full">
+                      {wishListLength}
+                    </span>
+                    )
+                  }
+ 
                 </div>
+                </Link>
+
               </div>
 
 
@@ -127,7 +138,7 @@ const Nav = () => {
           </nav>
           <MobileMenu customer={customerInfo} accessToken={accessToken} />
         </header>
-        {/* <Topbar isHome={true} isScrolled={isScrolled} /> */}
+        <Topbar isHome={true} isScrolled={isScrolled} />
       </div>
     </>
 

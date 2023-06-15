@@ -35,7 +35,7 @@ const CartDropdown = ({ iconSize }) => {
             <ShoppingBag size={iconSize} />
           </Popover.Button>
         </Link>
-        <span className="absolute top-[22px] pl-[18px] md:top-[18px] right-0 transform translate-x-[50%] translate-y-[-50%] md:pl-[20px] font-extralight text-xs rounded-full pt-[0.65rem]">
+        <span className="absolute top-[22px] pl-[18px] md:top-[25px] right-0 transform translate-x-[50%] translate-y-[-50%] md:pl-[20px] font-extralight text-xs rounded-full pt-[0.65rem]">
           {cartQuantity}
         </span>
 

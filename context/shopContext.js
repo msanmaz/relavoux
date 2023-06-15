@@ -1,152 +1,77 @@
-import { createContext, useState, useEffect } from 'react'
-import { updateShopifyCheckout } from '../lib/helpers'
-import { createCheckout,getCollection, getCustomerInfo,getProductsInCollection } from '../lib/shopify'
-import { useModalDropDown } from "context/modal-context"
+import { createContext, useState, useEffect } from 'react';
+import { updateShopifyCheckout } from '../lib/helpers';
+import { createCheckout, getCollection, getCustomerInfo, getProductsInCollection } from '../lib/shopify';
+import { useModalDropDown } from "context/modal-context";
 
-
-const CartContext = createContext()
+const CartContext = createContext();
 
 export default function ShopProvider({ children }) {
-  const [cart, setCart] = useState([])
-  const [cartOpen, setCartOpen] = useState(false)
-  const [checkoutId, setCheckoutId] = useState('')
-  const [checkoutUrl, setCheckoutUrl] = useState('')
-  const [drawer, setDrawer] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [lists, setLists] = useState([])
-  const [customerInfo, setCustomerInfo] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const stickyValue = window.localStorage.getItem('customer');
+  const [cart, setCart] = useState([]);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [checkoutId, setCheckoutId] = useState('');
+  const [checkoutUrl, setCheckoutUrl] = useState('');
+  const [drawer, setDrawer] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [lists, setLists] = useState([]);
+  const [collection, setCollection] = useState();
 
-      return stickyValue !== null
-        ? JSON.parse(stickyValue)
-        : '';
-    }
-  });
-  const [wishList, setWishList] = useState({items:[]})
-  const [accessToken, SetAccessToken] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const stickyValue = window.localStorage.getItem('user');
-
-      return stickyValue !== null
-        ? JSON.parse(stickyValue)
-        : '';
-    }
-  });
-
-  const [collection,setCollection] = useState()
-
-  const { timedOpen } = useModalDropDown()
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const likes = JSON.parse(window.localStorage.getItem('likes'));
-      if (likes) setWishList(likes);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.checkout_id) {
-      const cartObject = JSON.parse(localStorage.checkout_id)
-      if (cartObject[0].variantId) {
-        setCart([cartObject[0]])
-      } else if (cartObject[0].length > 0) {
-        setCart(...[cartObject[0]])
-      }
-
-      setCheckoutId(cartObject[1].id)
-      setCheckoutUrl(cartObject[1].webUrl)
-
-
-    }
-  }, [])
+  const { timedOpen } = useModalDropDown();
 
   useEffect(() => {
     const fetchCats = async () => {
-      const collection = await getCollection()
-      const collections = await getProductsInCollection()
-      setLists(collections)
-      setCollection(collection)
-    }
-    fetchCats()
-
-  }, [])
-
-
-    useEffect(()=> {
-      const fetchCats = async () => {
-        const data = await getCustInfo(accessToken.accessToken)
-        localStorage.setItem("customer", JSON.stringify([data]))
-        setCustomerInfo(data)
-       }
-       fetchCats()
-
-    },[accessToken])
-  
- async function getCustInfo(aToken){
-  if(aToken){
-    const data = await getCustomerInfo(aToken)
-    localStorage.setItem("customer", JSON.stringify([data]))
-    return data
-  }
- }
-
-
+      const collection = await getCollection();
+      const collections = await getProductsInCollection();
+      setLists(collections);
+      setCollection(collection);
+    };
+    fetchCats();
+  }, []);
 
   async function addToCart(newItem) {
     if (cart.length === 0) {
-      setLoading(prevState => !prevState)
-      setCart([...cart,newItem])
-      const checkout = await createCheckout(newItem.variantId, newItem.variantQuantity)
-
-      setCheckoutId(checkout.id)
-      setCheckoutUrl(checkout.webUrl)
-      timedOpen()
-      setLoading(prevState => !prevState)
-      localStorage.setItem("checkout_id", JSON.stringify([newItem, checkout]))
+      setLoading(prevState => !prevState);
+      setCart([...cart, newItem]);
+      const checkout = await createCheckout(newItem.variantId, newItem.variantQuantity);
+      setCheckoutId(checkout.id);
+      setCheckoutUrl(checkout.webUrl);
+      timedOpen();
+      setLoading(prevState => !prevState);
     } else {
-      setLoading(prevState => !prevState)
-      let newCart = [...cart]
-      let added = false
+      setLoading(prevState => !prevState);
+      let newCart = [...cart];
+      let added = false;
       newCart.map(item => {
         if (item.variantId === newItem.variantId) {
-          item.variantQuantity += newItem.variantQuantity
-          added = true
+          item.variantQuantity += newItem.variantQuantity;
+          added = true;
         }
-      })
-      let newCartWithItem = [...newCart]
-
-      if (added) {
-      }else {
-        newCartWithItem = [...newCart,newItem]
+      });
+      let newCartWithItem = [...newCart];
+      if (!added) {
+        newCartWithItem = [...newCart, newItem];
       }
-    
-      setCart(newCartWithItem)
-      const newCheckout = await updateShopifyCheckout(newCartWithItem,checkoutId )
-      setLoading(false)
-      timedOpen()
-      localStorage.setItem("checkout_id", JSON.stringify([newCartWithItem, newCheckout]))
+      setCart(newCartWithItem);
+      const newCheckout = await updateShopifyCheckout(newCartWithItem, checkoutId);
+      setLoading(false);
+      timedOpen();
     }
   }
 
-  async function updateCartItemQuantity(quantity,id ) {
-    let newQuantity = Math.floor(quantity)
+  async function updateCartItemQuantity(quantity, id) {
+    let newQuantity = Math.floor(quantity);
     if (quantity === '') {
-      newQuantity = ''
+      newQuantity = '';
     }
-    let newCart = [...cart]
+    let newCart = [...cart];
     newCart.forEach(item => {
       if (item.variantId === id) {
-        item.variantQuantity = newQuantity
+        item.variantQuantity = newQuantity;
       }
-    })
-
+    });
     // take out zeroes items
-    newCart = newCart.filter(i => i.variantQuantity !== 0)
-    setCart(newCart)
-
-   const data = await updateShopifyCheckout(newCart, checkoutId)
-    localStorage.setItem("checkout_id", JSON.stringify([newCart, data]))
+    newCart = newCart.filter(i => i.variantQuantity !== 0);
+    setCart(newCart);
+    const data = await updateShopifyCheckout(newCart, checkoutId);
   }
 
   return (
@@ -157,22 +82,15 @@ export default function ShopProvider({ children }) {
       addToCart,
       checkoutUrl,
       loading,
-      wishList,
-      setWishList,
-      accessToken,
-      SetAccessToken,
       lists,
-      customerInfo,
       collection,
-      setCustomerInfo,
-      updateCartItemQuantity,
-      getCustInfo
+      updateCartItemQuantity
     }}>
       {children}
     </CartContext.Provider>
-  )
+  );
 }
 
-const ShopConsumer = CartContext.Consumer
+const ShopConsumer = CartContext.Consumer;
 
-export { ShopConsumer, CartContext }
+export { ShopConsumer, CartContext };

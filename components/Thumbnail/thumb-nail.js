@@ -1,16 +1,24 @@
 import PlaceholderImage from "./PlaceholderImage"
 import clsx from "clsx"
 import Image from "next/image"
-import React from "react"
+import React, { useState, useEffect } from "react"
 
 
 const Thumbnail = ({
   thumbnail,
-  images,
+  primaryImage,
+  secondaryImage,
+  isHovering,
   size = "small",
   productPage = false,
 }) => {
-  const initialImage = thumbnail || images;
+  const [currentImage, setCurrentImage] = useState(thumbnail || primaryImage);
+
+  // Update the current image when the hover state changes
+  useEffect(() => {
+    setCurrentImage(isHovering ? secondaryImage : primaryImage);
+  }, [isHovering, primaryImage, secondaryImage]);
+
   return (
     <div
       className={clsx("relative", {
@@ -23,19 +31,16 @@ const Thumbnail = ({
         "w-full": size === "full",
       })}
     >
-      <ImageOrPlaceholder images={initialImage} size={size} />
+      <ImageOrPlaceholder image={currentImage} size={size} />
     </div>
   );
 };
 
 
-const ImageOrPlaceholder = ({
-  images,
-  size,
-})  => {
-  return images ? (
+const ImageOrPlaceholder = ({ image, size }) => {
+  return image ? (
     <Image
-      src={images}
+      src={image}
       alt="Thumbnail"
       layout="fill"
       objectFit="cover"
@@ -47,7 +52,8 @@ const ImageOrPlaceholder = ({
     <div className="w-full h-full absolute inset-0 bg-gray-100 flex items-center justify-center">
       <PlaceholderImage size={size === "small" ? 16 : 24} />
     </div>
-  )
-}
+  );
+};
+
 
 export default Thumbnail
