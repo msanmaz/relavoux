@@ -76,7 +76,7 @@ const Topbar = ({ isHome, isScrolled }) => {
 
     return (
         <>
-            <div className={`transition-opacity duration-300 ${isVisible ? 'opacity-0 invisible' : 'opacity-100 visible'} pl-[1.1rem]   md:pl-[8rem] text-base z-[50] bg-white  !h-[3rem] w-full py-[0.7rem] items-center border-b border-gray-300`}>
+            <div className={`transition-all duration-300 ${isVisible ? 'opacity-0 invisible h-0' : 'opacity-100 visible !h-[3rem]'} pl-[1.1rem]   md:pl-[8rem] text-base z-[50] bg-white w-full py-[0.7rem] items-center border-b border-gray-300`}>
                 <Swiper
                     slidesPerView={'auto'}
                     grabCursor={true}
