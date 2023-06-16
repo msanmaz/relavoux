@@ -28,8 +28,8 @@ const SlideGallery = ({ products }) => {
 
 
           <div className="flex w-full pt-4 md:pt-0 md:px-[2rem] flex-col">
-            <div className="text-xl bebasBold">Community Favourites</div>
-            <div className="futuraMedium text-gray-400 pb-2 md:py-2">Top picks from the shop</div>
+            <div className="md:text-xl erbaum text-base ">Community Favourites</div>
+            <div className="bebas text-sm md:text-base text-gray-400 pb-2 md:py-2">Top picks from the shop</div>
           </div>
 
         <div className="max-w-full md:pl-[2rem]">

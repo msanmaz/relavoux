@@ -36,7 +36,7 @@ const ProductDetail = ({ products }) => {
 
                 </div>
             </div>
-                : <div className='flex pb-[2rem] flex-col w-full mt-[-3rem] md:mt-0'>
+                : <div className='flex pb-[2rem] flex-col w-full'>
                     <MobileGallery product={products.images.edges} />
 
                     <div className='justify-start'>

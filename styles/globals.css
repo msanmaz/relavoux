@@ -50,7 +50,7 @@
 }
 
 .back-button {
-  font-family: "Erbaum-Thin";
+  font-family: "RobotoFlex-Regular";
   color: black;
   line-height: 1;
   font-size: 11px;
@@ -70,7 +70,6 @@
   }
   .erbaum {
     font-family: "Erbaum-Regular";
-    font-size: 1.3rem!important;
   }
   .erbaum-thin {
     font-family: "Erbaum-Thin";
@@ -106,6 +105,9 @@
   }
   .content-container {
     @apply max-w-[1440px] w-full mx-auto px-8;
+  }
+  .crumbs-nav{
+    @apply text-[11px] md:text-[15px] !font-light !text-[#000000]
   }
 
   .contrast-btn {

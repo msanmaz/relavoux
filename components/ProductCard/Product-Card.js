@@ -51,7 +51,7 @@ const ProductCard = ({ product }) => {
             size='full'
           />
 
-          <Transition show={isHovering}>
+          {/* <Transition show={isHovering}>
           <div className='absolute bottom-0 w-full '>
             <Transition.Child
               show={isHovering}
@@ -78,7 +78,7 @@ const ProductCard = ({ product }) => {
                 </IconContext.Provider>
               </div>
             </Transition.Child>
-          </div></Transition>
+          </div></Transition> */}
         </div>
       </div>
 
