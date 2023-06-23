@@ -84,7 +84,7 @@ const Nav = () => {
               </div>
               <div className="md:flex hidden items-center h-full">
                 <Link href="/">
-                  <a className="text-base erbaum uppercase">RELAVOUX</a>
+                  <a className="text-base erbaum font-bold uppercase">RELAVOUX</a>
                 </Link>
               </div>
 
@@ -98,7 +98,7 @@ const Nav = () => {
 
             <div className="flex md:hidden items-center h-full">
               <Link href="/">
-                <a className="text-lg erbaum uppercase">RELAVOUX</a>
+                <a className="text-lg erbaum font-bold uppercase">RELAVOUX</a>
               </Link>
             </div>
 

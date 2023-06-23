@@ -60,24 +60,35 @@
   .bebas {
     font-family: "BebasNeue";
     font-weight: 999;
+    font-display: block;
+
   }
 
   .roboto-regular{
+    font-display: block;
+
     font-family: "RobotoFlex-Regular";
   }
   .roboto-flex{
+    font-display: block;
+
     font-family: "RobotoFlex";
   }
   .erbaum {
     font-family: "Erbaum-Regular";
+    font-display: block;
   }
   .erbaum-thin {
+    font-display: block;
+
     font-family: "Erbaum-Thin";
   }
   .bebasLight {
     font-family: "BebasNeue Light";
   }
   .bebeasBook {
+    font-display: block;
+
     font-family: "BebasNeue Book";
   }
 
@@ -88,6 +99,8 @@
     font-family: "Futura-pt";
   }
   .futuraLigth {
+    font-display: block;
+
     font-family: "Futura Light";
   }
   .centerlayer {
